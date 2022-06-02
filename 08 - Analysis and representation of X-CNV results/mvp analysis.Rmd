@@ -51,7 +51,7 @@ for(i in 1:length(muestras)){
   cnv_common_pt<- rbind(cnv_common_pt, contenedor[[i]])
 }
 
-#Comporbamos que el data.frame resultante tiene la estructura adecuada.
+#Comprobamos que el data.frame resultante tiene la estructura adecuada.
 head(cnv_common_pt)
 tail(cnv_common_pt)
 str(cnv_common_pt)

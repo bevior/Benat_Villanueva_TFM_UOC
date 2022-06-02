@@ -413,30 +413,30 @@ for(i in 1:length(muestras)){
   cnv_common_pt&lt;- rbind(cnv_common_pt, contenedor[[i]])
 }
 
-#Comporbamos que el data.frame resultante tiene la estructura adecuada.
+#Comprobamos que el data.frame resultante tiene la estructura adecuada.
 head(cnv_common_pt)</code></pre>
 <pre><code>##   chrom     start       end  GT sample_name       MVP            PT
-## 1  chr1  17026354  17086181 DEL      AFA016 0.1232186        bening
-## 2  chr1 146410812 146466371 DEL      AFA016 0.1232186        bening
-## 3  chr2 130858168 130878088 DEL      AFA016 0.1232186        bening
-## 4  chr2 131975975 131996088 DUP      AFA016 0.1232186        bening
-## 5  chr3   1189421   1445354 DUP      AFA016 0.1539346 likely bening
-## 6  chr5 118280192 118556290 DUP      AFA016 0.2820131     uncertain</code></pre>
+## 1  chr1  17026354  17086181 DEL  sample_001 0.1232186        bening
+## 2  chr1 146410812 146466371 DEL  sample_001 0.1232186        bening
+## 3  chr2 130858168 130878088 DEL  sample_001 0.1232186        bening
+## 4  chr2 131975975 131996088 DUP  sample_001 0.1232186        bening
+## 5  chr3   1189421   1445354 DUP  sample_001 0.1539346 likely bening
+## 6  chr5 118280192 118556290 DUP  sample_001 0.2820131     uncertain</code></pre>
 <pre class="r"><code>tail(cnv_common_pt)</code></pre>
 <pre><code>##     chrom    start      end  GT sample_name       MVP            PT
-## 937  chr9 39078541 39239206 DUP      WAZ118 0.1539346 likely bening
-## 938 chr12 10583464 10599263 DEL      WAZ118 0.1232186        bening
-## 939 chr15 30675179 30700266 DUP      WAZ118 0.1232186        bening
-## 940 chr16 18433157 18442756 DUP      WAZ118 0.1232186        bening
-## 941 chr16 32758820 33777723 DEL      WAZ118 0.1232186        bening
-## 942 chr17 44372248 44628171 DEL      WAZ118 0.1232186        bening</code></pre>
+## 937  chr9 39078541 39239206 DUP  sample_100 0.1539346 likely bening
+## 938 chr12 10583464 10599263 DEL  sample_100 0.1232186        bening
+## 939 chr15 30675179 30700266 DUP  sample_100 0.1232186        bening
+## 940 chr16 18433157 18442756 DUP  sample_100 0.1232186        bening
+## 941 chr16 32758820 33777723 DEL  sample_100 0.1232186        bening
+## 942 chr17 44372248 44628171 DEL  sample_100 0.1232186        bening</code></pre>
 <pre class="r"><code>str(cnv_common_pt)</code></pre>
 <pre><code>## &#39;data.frame&#39;:    942 obs. of  7 variables:
 ##  $ chrom      : chr  &quot;chr1&quot; &quot;chr1&quot; &quot;chr2&quot; &quot;chr2&quot; ...
 ##  $ start      : int  17026354 146410812 130858168 131975975 1189421 118280192 66102939 46923282 7973565 19532938 ...
 ##  $ end        : int  17086181 146466371 130878088 131996088 1445354 118556290 66105700 47682901 8077359 19536853 ...
 ##  $ GT         : Factor w/ 2 levels &quot;DEL&quot;,&quot;DUP&quot;: 1 1 1 2 2 2 2 1 1 1 ...
-##  $ sample_name: Factor w/ 100 levels &quot;AFA016&quot;,&quot;ATTA002&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ sample_name: Factor w/ 100 levels &quot;sample_001&quot;,&quot;sample_002&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ MVP        : num  0.123 0.123 0.123 0.123 0.154 ...
 ##  $ PT         : Factor w/ 5 levels &quot;pathogenic&quot;,&quot;likely pathogenic&quot;,..: 5 5 5 5 4 3 4 3 1 5 ...</code></pre>
 <pre class="r"><code># 2.- Analizar los datos.
@@ -461,12 +461,12 @@ datos_figura_08&lt;- data.frame(table(datos_figura_08$sample_name, datos_figura_
 names(datos_figura_08)&lt;- c(&quot;sample_name&quot;, &quot;PT&quot;, &quot;CNV&quot;)
 head(datos_figura_08)</code></pre>
 <pre><code>##   sample_name         PT CNV
-## 1      AFA016 pathogenic   1
-## 2     ATTA002 pathogenic   0
-## 3     ATTA007 pathogenic   0
-## 4     ATTA015 pathogenic   0
-## 5     ATTA022 pathogenic   0
-## 6     ATTA028 pathogenic   0</code></pre>
+## 1  sample_001 pathogenic   1
+## 2  sample_002 pathogenic   0
+## 3  sample_003 pathogenic   0
+## 4  sample_004 pathogenic   0
+## 5  sample_005 pathogenic   0
+## 6  sample_006 pathogenic   0</code></pre>
 <pre class="r"><code>#Creremos una paleta de colores personalizada.
 colores&lt;- c(&quot;#FF0000&quot;, &quot;#FF6C00&quot;, &quot;#87918B&quot;, &quot;#3E9F75&quot;, &quot;#1E5BFF&quot;)
 #Un barplot para enseñar cuantos CNV de cada tipo tiene cada individuo.
@@ -515,12 +515,12 @@ for(i in 1:length(ind_max)){
 datos_figura_09$cnv_index&lt;- unlist(indices) #Ahora los sacamos de la lista y lo guardamos como una nueva columna.
 head(datos_figura_09)</code></pre>
 <pre><code>##   chrom     start       end  GT sample_name       MVP            PT cnv_index
-## 1  chr1  17026354  17086181 DEL      AFA016 0.1232186        bening         1
-## 2  chr1 146410812 146466371 DEL      AFA016 0.1232186        bening         2
-## 3  chr2 130858168 130878088 DEL      AFA016 0.1232186        bening         3
-## 4  chr2 131975975 131996088 DUP      AFA016 0.1232186        bening         4
-## 5  chr3   1189421   1445354 DUP      AFA016 0.1539346 likely bening         5
-## 6  chr5 118280192 118556290 DUP      AFA016 0.2820131     uncertain         6</code></pre>
+## 1  chr1  17026354  17086181 DEL  sample_001 0.1232186        bening         1
+## 2  chr1 146410812 146466371 DEL  sample_001 0.1232186        bening         2
+## 3  chr2 130858168 130878088 DEL  sample_001 0.1232186        bening         3
+## 4  chr2 131975975 131996088 DUP  sample_001 0.1232186        bening         4
+## 5  chr3   1189421   1445354 DUP  sample_001 0.1539346 likely bening         5
+## 6  chr5 118280192 118556290 DUP  sample_001 0.2820131     uncertain         6</code></pre>
 <pre class="r"><code>#Codificaremos los nombres de las muestras para no mostrarlos en el artículo.
 #Creamos un vector con los nuevos nombres, refactorizamos y sobreescribimos los datos.
 coded_names&lt;- paste(&quot;Sample&quot;, 1:100, sep=&quot; &quot;)
