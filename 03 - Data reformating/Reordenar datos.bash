@@ -140,8 +140,8 @@ mkdir Paso4_GATK_to_BED
 #Comprobamos el numero de archivos generados y su estrcutura.
 ls Paso4_GATK_to_BED
 ls Paso4_GATK_to_BED | wc -l
-cat Paso4_GATK_to_BED/AFA016_GATK_cnv.bed
-cat Paso4_GATK_to_BED/WAZ118_GATK_cnv.bed
+cat Paso4_GATK_to_BED/sample_001_GATK_cnv.bed
+cat Paso4_GATK_to_BED/sample_050_GATK_cnv.bed
 #Comprobamos que no quedan CNVs "DIP"
 grep DIP Paso4_GATK_to_BED/*_GATK_cnv.bed
 
