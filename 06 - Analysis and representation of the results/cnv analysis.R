@@ -447,7 +447,7 @@ library(GenomicRanges)
 library(karyoploteR)
 
 #Abrimos el archivo del manifiesto.
-file<- "Datos/Manifiesto_cameroon2_no_chrXYM.bed"
+file<- "Datos/Manifiesto_2_no_chrXYM.bed"
 manifiesto<- open.bed(file)
 head(manifiesto)
 

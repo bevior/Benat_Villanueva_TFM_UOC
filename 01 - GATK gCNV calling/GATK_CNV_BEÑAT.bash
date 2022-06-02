@@ -36,7 +36,7 @@ cd /mnt/d9fa213d-9e64-475f-8e07-bb8a8721253b/benat01/parque/GATK_gCNV
 alias GATKv42='/mnt/d9fa213d-9e64-475f-8e07-bb8a8721253b/benat01/GATK_instalation/gatk-4.2.5.0/gatk'
 
 #Submuestreamos el archivo bed que contiene las coordenadas de los exomas. Quitaremos los cromosomas sexuales y el ADN mitoconcdrial.
-grep -v 'chrX\|chrY\|chrM' /MSA01/EXOMES-CAMEROON/intermedios/Manifiesto_cameroon2.bed > Manifiesto_cameroon2_no_chrXYM.bed
+grep -v 'chrX\|chrY\|chrM' /MSA01/EXOMES/intermedios/Manifiesto_2.bed > Manifiesto_2_no_chrXYM.bed
 
 #Me gustaría guardar ciertos directorios como variables pero no me sale.
 almacen=`/mnt/d9fa213d-9e64-475f-8e07-bb8a8721253b/benat01/bams`
@@ -56,7 +56,7 @@ mkdir Paso1_PreprocessIntervlas
 
 GATKv42 PreprocessIntervals \
 -R /MSA01/REF/hg19/ucsc.hg19.fasta \
--L Manifiesto_cameroon2_no_chrXYM.bed \
+-L Manifiesto_2_no_chrXYM.bed \
 --bin-length 0 \
 --padding 250 \
 -imr OVERLAPPING_ONLY \

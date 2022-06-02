@@ -161,6 +161,8 @@ figura_09
 
 ## ¿En que regiones caen esos CNV patogenicos?
 datos_tabla_10<- cnv_common_pt[cnv_common_pt$PT=="pathogenic",]
+#Codificamos los nombres.
+datos_tabla_10$sample_name<- factor(datos_tabla_10$sample_name, levels= muestras, labels= coded_names)
 datos_tabla_10
 #De aquí podriamos explicar que son todo deleciones. Y en los cromosomas 5, 6, 9, 11, 12 y 17.
 

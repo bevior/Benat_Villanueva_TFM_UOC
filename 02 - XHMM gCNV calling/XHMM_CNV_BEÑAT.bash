@@ -44,7 +44,7 @@ mkdir /mnt/d9fa213d-9e64-475f-8e07-bb8a8721253b/benat01/parque/XHMM_gCNV
 cd /mnt/d9fa213d-9e64-475f-8e07-bb8a8721253b/benat01/parque/XHMM_gCNV
 
 #Copiaremos los intervalos que definen los exomas secuenciados. En esta ocasion cogeremos todos a excepción de los cromosomas sexuales y el ADN mitocondrial.
-grep -v 'chrX\|chrY\|chrM' /MSA01/EXOMES-CAMEROON/intermedios/Manifiesto_cameroon2.bed > Manifiesto_cameroon2_no_chrXYM.bed
+grep -v 'chrX\|chrY\|chrM' /MSA01/EXOMES/intermedios/Manifiesto_2.bed > Manifiesto_2_no_chrXYM.bed
 
 #También haremos una carpeta para los historiales.
 mkdir historiales
@@ -75,7 +75,7 @@ for input in /mnt/d9fa213d-9e64-475f-8e07-bb8a8721253b/benat01/bams/*.bam; do ou
 for input in /mnt/d9fa213d-9e64-475f-8e07-bb8a8721253b/benat01/bams/*.bam; do output=${input#/mnt/d9fa213d-9e64-475f-8e07-bb8a8721253b/benat01/bams/};
 echo "/mnt/d9fa213d-9e64-475f-8e07-bb8a8721253b/benat01/GATK_instalation/gatk-4.2.5.0/gatk DepthOfCoverage \
 -I $input \
--L Manifiesto_cameroon2_no_chrXYM.bed \
+-L Manifiesto_2_no_chrXYM.bed \
 -R /MSA01/REF/hg19/ucsc.hg19.fasta \
 -imr OVERLAPPING_ONLY \
 -pt sample --verbosity INFO --omit-depth-output-at-each-base --omit-locus-table \
@@ -127,11 +127,11 @@ source activate gatk
 popd
 
 #Ese paso debería de hacerse con la herramienta GCContentByInterval, pero esto solo estaba en GATK3. En su lugar lo voy a intentar hacer con AnnotateIntervals en GATK4.
-#A modo de intervalos a analizar no vamos a meter el .interval_list, si no el Manifiesto_cameroon2_no_chrXYM.bed, que contiene las coordenadas de todos los exomas secuenciados.
+#A modo de intervalos a analizar no vamos a meter el .interval_list, si no el Manifiesto_2_no_chrXYM.bed, que contiene las coordenadas de todos los exomas secuenciados.
 mkdir Paso2_AnnotateIntervals
 
 $GATKv42 AnnotateIntervals \
--L Manifiesto_cameroon2_no_chrXYM.bed \
+-L Manifiesto_2_no_chrXYM.bed \
 -R /MSA01/REF/hg19/ucsc.hg19.fasta \
 -imr OVERLAPPING_ONLY \
 -O Paso2_AnnotateIntervals/DATA.locus_GC.txt

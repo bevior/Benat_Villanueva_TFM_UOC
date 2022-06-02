@@ -556,18 +556,20 @@ figura_09</code></pre>
 
 ## ¿En que regiones caen esos CNV patogenicos?
 datos_tabla_10&lt;- cnv_common_pt[cnv_common_pt$PT==&quot;pathogenic&quot;,]
+#Codificamos los nombres.
+datos_tabla_10$sample_name&lt;- factor(datos_tabla_10$sample_name, levels= muestras, labels= coded_names)
 datos_tabla_10</code></pre>
-<pre><code>##     chrom     start       end  GT  sample_name       MVP         PT
-## 9   chr12   7973565   8077359 DEL       AFA016 0.8395593 pathogenic
-## 88   chr5  68861645  70400738 DEL  CAM-GFF-107 0.8395593 pathogenic
-## 110  chr5  68830220  70400738 DEL  CAM-GFF-119 0.8395593 pathogenic
-## 133 chr11 118100306 118108227 DEL   CAM-GFF-37 0.8537558 pathogenic
-## 187 chr11 118103907 118108227 DEL  CAM-GUI-039 0.8537558 pathogenic
-## 230 chr11 118100306 118108227 DEL  CAM-GUI-129 0.8537558 pathogenic
-## 452 chr17  44409916  44772030 DEL CAM-PYKL-140 0.8395593 pathogenic
-## 466 chr17  78201365  78220030 DEL CAM-PYKL-144 0.8537558 pathogenic
-## 811  chr9  67926550  69391231 DEL  TK-KVBAF069 0.8395593 pathogenic
-## 934  chr6    292191    391949 DEL       WAZ118 0.8395593 pathogenic</code></pre>
+<pre><code>##     chrom     start       end  GT sample_name       MVP         PT
+## 9   chr12   7973565   8077359 DEL    Sample 1 0.8395593 pathogenic
+## 88   chr5  68861645  70400738 DEL   Sample 11 0.8395593 pathogenic
+## 110  chr5  68830220  70400738 DEL   Sample 14 0.8395593 pathogenic
+## 133 chr11 118100306 118108227 DEL   Sample 16 0.8537558 pathogenic
+## 187 chr11 118103907 118108227 DEL   Sample 22 0.8537558 pathogenic
+## 230 chr11 118100306 118108227 DEL   Sample 26 0.8537558 pathogenic
+## 452 chr17  44409916  44772030 DEL   Sample 47 0.8395593 pathogenic
+## 466 chr17  78201365  78220030 DEL   Sample 48 0.8537558 pathogenic
+## 811  chr9  67926550  69391231 DEL   Sample 88 0.8395593 pathogenic
+## 934  chr6    292191    391949 DEL  Sample 100 0.8395593 pathogenic</code></pre>
 <pre class="r"><code>#De aquí podriamos explicar que son todo deleciones. Y en los cromosomas 5, 6, 9, 11, 12 y 17.
 
 
